@@ -1,27 +1,24 @@
 import { useParams } from "react-router-dom"
 import CardComponent from "../components/CardComponent";
-import { useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
+import { useContext, useEffect } from "react";
+import PostsContex from "../context/PostsContex,jsx";
 
 const SinglePost = () => {
 
 
 
-    const [singlePost, setSinglePosts] = useState(null);
+    const { post,setPost, setCurUrl } = useContext(PostsContex);
     const { id } = useParams();
 
     const urlPosts = `https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts/${id}`;
+        useEffect(() => { 
 
-    useEffect(() => {
-
-        axios.get(urlPosts)
-            .then(resp => {
-                setSinglePosts(resp.data);
-            }
-            )
-
+            setPost([])
+            
+        setCurUrl(urlPosts)
     }, [id])
+
+
 
     return (
 
@@ -29,8 +26,11 @@ const SinglePost = () => {
             <div className="container">
                 <h2 className="py-4">Single post card</h2>
 
-                {singlePost ? <CardComponent curPost={singlePost} single={true} />
-                    : <h2>Caricamento</h2>}
+                {post && post.length > 0 ? (
+                    <CardComponent curPost={post[0]} single={true} />
+                ) : (
+                    <h2>Caricamento</h2>
+                )}
             </div>
 
         </main>

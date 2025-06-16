@@ -1,22 +1,22 @@
-
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import CardComponent from "../components/CardComponent";
 import PostsContex from "../context/PostsContex,jsx";
 
 const Posts = () => {
 
-    const { post, setCurUrl } = useContext(PostsContex);
+    const { post, setPost, setCurUrl } = useContext(PostsContex);
 
     const urlPosts = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts/?page=1&limit=50"
 
     useEffect(() => {
 
-        setCurUrl(urlPosts)
+        
+
+        setCurUrl(urlPosts);
 
 
     }, [])
+
 
 
 

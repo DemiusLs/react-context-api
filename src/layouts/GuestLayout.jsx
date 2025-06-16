@@ -9,20 +9,25 @@ const GuestLayout = () => {
 
     const [curUrl, setCurUrl] = useState(null)
     const [post, setPost] = useState([]);
-    const urlPosts = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts/?page=1&limit=50"
+
 
 
     useEffect(() => {
-        
+
 
         axios.get(curUrl)
 
             .then(resp => {
-                console.log(resp.data)
-                console.log(post)
-                setPost([...resp.data]);
-                console.log(post)
 
+                console.log(typeof (resp.data))
+
+                const data = Array.isArray(resp.data) ? resp.data : [resp.data];
+                setPost(data);
+
+
+            }).catch(err => {
+                console.error("Errore:", err);
+                setPost([]);
             })
 
     }, [curUrl])
