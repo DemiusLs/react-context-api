@@ -7,20 +7,18 @@ import PostsContex from "../context/PostsContex,jsx";
 
 const Posts = () => {
 
-    const { post, setPost } = useContext(PostsContex);
+    const { post, setCurUrl } = useContext(PostsContex);
 
     const urlPosts = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts/?page=1&limit=50"
 
-
-
     useEffect(() => {
 
-        axios.get(urlPosts)
-            .then(resp => {
-                setPost(resp.data);
-            })
+        setCurUrl(urlPosts)
+
 
     }, [])
+
+
 
     return (
         <>
