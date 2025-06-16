@@ -4,16 +4,13 @@ import PostsContex from "../context/PostsContex,jsx";
 
 const Posts = () => {
 
-    const { post, setPost, setCurUrl } = useContext(PostsContex);
+    const { post, setCurUrl} = useContext(PostsContex);
 
     const urlPosts = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts/?page=1&limit=50"
 
-    useEffect(() => {
-
-        
+    useEffect(() => {        
 
         setCurUrl(urlPosts);
-
 
     }, [])
 

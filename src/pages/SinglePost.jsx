@@ -5,19 +5,16 @@ import PostsContex from "../context/PostsContex,jsx";
 
 const SinglePost = () => {
 
-
-
     const { post,setPost, setCurUrl } = useContext(PostsContex);
     const { id } = useParams();
 
     const urlPosts = `https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts/${id}`;
-        useEffect(() => { 
+    useEffect(() => { 
 
-            setPost([])
-            
-        setCurUrl(urlPosts)
-    }, [id])
+        setPost([]);            
+        setCurUrl(urlPosts);
 
+    }, [id]);
 
 
     return (

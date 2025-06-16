@@ -5,6 +5,7 @@ import About from "./pages/About"
 import Posts from "./pages/Posts"
 import SinglePost from "./pages/SinglePost"
 import UploadPost from "./pages/UploadPost"
+import Page404 from "./pages/Page404"
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
 
             </Route>
 
+
+            <Route path="*" element={<Page404 />} />
           </Route>
 
         </Routes>
