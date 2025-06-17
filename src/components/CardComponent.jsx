@@ -10,7 +10,7 @@ const CardComponent = ({ curPost, single }) => {
             <h6 className="card-subtitle mb-2 text-body-secondary">{curPost.author}</h6>
             <p className="card-text over-text">{curPost.body}</p>
 
-            {single ? <Link to="/posts" className="card-link">All Posts</Link> : <Link to={`/posts/${curPost.id}`} className="card-link">Single Post</Link>}
+            {single ? <Link to="/posts" className="btn btn-primary ">All Posts</Link> : <Link to={`/posts/${curPost.id}`} className="card-link btn btn-primary">Single Post</Link>}
 
 
         </div>

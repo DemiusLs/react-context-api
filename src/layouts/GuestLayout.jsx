@@ -3,6 +3,7 @@ import AppHeader from "../components/AppHeader"
 import PostContex from "../context/PostsContex,jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AlertComponent from "../components/AlertComponent";
 
 const GuestLayout = () => {
 
@@ -30,14 +31,13 @@ const GuestLayout = () => {
 
 
             }).catch(err => {
-                console.error("Errore axios:", err); // Meglio usare error.response
+                console.log("Errore axios:", err);
 
-                setPost([]);
 
                 if (err.response && err.response.status === 404) {
                     navigate("/not-found");
                 } else {
-                    setError("Errore sconosciuto");
+                    setError("error");
                 }
             })
 
@@ -48,7 +48,7 @@ const GuestLayout = () => {
 
 
     const gameContextValues = {
-        post, setPost, curUrl, setCurUrl
+        post, setPost, curUrl, setCurUrl, error, setError
     };
 
 
@@ -56,6 +56,8 @@ const GuestLayout = () => {
         <>
             <PostContex value={gameContextValues}>
                 <AppHeader />
+                <AlertComponent />
+
                 <Outlet />
 
             </PostContex>
